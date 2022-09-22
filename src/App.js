@@ -1,12 +1,21 @@
+import Cart from "./components/Cart/Cart";
+import { useState } from "react"; // providing the feature that could track state in the app
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import CartProvider from "./store/CartProvider";
-import Cart from "./components/Cart/Cart";
 
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
+
+  function showCardHandler() {
+    setCartIsShown = true;
+  }
+  function hideCartHandler() {
+    setCartIsShown = false;
+  }
   return (
     <CartProvider>
-      <Cart />
+      {cartIsShown && <Cart />}
       <Header />
       <main>
         <Meals />
